@@ -1,17 +1,17 @@
-package com.t3h.elibrary.mail;
+package com.t3h.elibrary.common;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
-public class ApplicationConfig {
+public class ConfigProperties {
     private static final Map<String, String> data = new HashMap<>();
 
     static {
         Properties prop = new Properties();
         try {
-            prop.load(new InputStreamReader(Objects.requireNonNull(ApplicationConfig.class.getClassLoader()
+            prop.load(new InputStreamReader(Objects.requireNonNull(ConfigProperties.class.getClassLoader()
                     .getResourceAsStream("config.properties")), StandardCharsets.UTF_8));
         } catch (IOException e) {
             throw new RuntimeException(e);
