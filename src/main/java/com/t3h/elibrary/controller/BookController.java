@@ -36,12 +36,8 @@ public class BookController {
     @GetMapping("/edit/{id}")
     public String editBook(@PathVariable(value = "id") int id, Model model) {
         Books book = bookService.getBookById(id);
-        if (book != null) {
-            model.addAttribute("books", book);
-            return "book/form";
-        } else {
-            return "redirect:/book/add";
-        }
+        model.addAttribute("books", book);
+        return "book/form";
     }
     @PostMapping("/save")
     public String saveBook(@ModelAttribute("books") Books book, BindingResult bindingResult) {
@@ -51,5 +47,6 @@ public class BookController {
         bookService.saveBook(book);
         return "redirect:/book/list";
     }
+
 }
 
