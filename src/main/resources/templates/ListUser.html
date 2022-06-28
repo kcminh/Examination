@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th=http://www.thymeleaf.org>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+    <title>List</title>
+</head>
+<body>
+    <div id="list">
+        <table>
+            <thead>
+            <tr>
+                <td name="username">Username</td>
+                <td name="fullname">Full Name</td>
+                <td name="email">Email</td>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="librarian: ${ModelUser}">
+                <td th:text="${librarian.username}"></td>
+                <td th:text="${librarian.firstName} + ${librarian.lastName}"></td>
+                <td th:text="${librarian.email}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <input id="searchText" type="text" name="text">
+        <button onclick="searchByName()" type="submit">Search</button>
+    </div>
+    <script>
+        function searchByName(){
+            var searchName = document.getElementById("searchText").value;
+            window.location.href=("/librarian/list?name="+ searchName);
+        }
+    </script>
+</body>
+</html>
