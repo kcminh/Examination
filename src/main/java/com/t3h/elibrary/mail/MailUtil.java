@@ -21,7 +21,7 @@ public class MailUtil {
     public void sendEmail(String subject, List<String> mailTo, List<String> mailCc,
                           List<String> mailBcc, String content, boolean isHtmlContent, List<String> pathFile)
             throws MessagingException {
-        System.out.println(emailSender);
+//        System.out.println(emailSender);
         MimeMessage message = emailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, true, StandardCharsets.UTF_8.name());
         helper.setSubject(subject);
@@ -31,7 +31,7 @@ public class MailUtil {
         if (mailBcc != null)
             helper.setBcc(mailBcc.toArray(new String[0]));
         if (isHtmlContent)
-            message.setContent(content, MediaType.TEXT_HTML_VALUE);
+            message.setContent(content, MediaType.TEXT_HTML_VALUE + ";charset=\"utf-8\"");
         else
             helper.setText(content);
 
