@@ -2,30 +2,21 @@ package com.t3h.elibrary.controller;
 
 import com.t3h.elibrary.model.Books;
 import com.t3h.elibrary.service.BookService;
-import com.t3h.elibrary.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/book")
 public class BookController {
     @Autowired
     private BookService bookService;
-
-    @Autowired
-    private CategoryService categoryService;
-
-    @GetMapping("/list")
-    public String listBook(@ModelAttribute("books") Books book, Model model)  {
-        model.addAttribute("books", bookService.listBook());
-        return "book/list-book";
-    }
 
     @GetMapping("/add")
     public String addBook(Model model) {
@@ -48,5 +39,12 @@ public class BookController {
         return "redirect:/book/list";
     }
 
+    @GetMapping("/list")
+    public ModelAndView getAllListBook() {
+        ModelAndView modelAndView =new ModelAndView("listbook");
+        modelAndView.addObject("books", bookService.listBook());
+
+        return modelAndView;
+    }
 }
 
