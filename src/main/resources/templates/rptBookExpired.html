@@ -56,13 +56,13 @@
     </div>
 </div>
 <script th:inline="javascript">
-    const labels = /*["a","b","c"]*/[[${bookIds}]];
+    const labels = /*["a","b","c"]*/[[${bookNames}]];
     const backgroundColor = [labels.length];
     for (var i = 0; i < labels.length; i++) {
         var color = '#' + Math.floor(Math.random() * 16777215).toString(16);
         backgroundColor[i] = color
     }
-    console.log(backgroundColor)
+    //console.log(backgroundColor)
 
 
     const data = {
