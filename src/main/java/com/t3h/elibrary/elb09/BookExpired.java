@@ -14,9 +14,9 @@ public class BookExpired {
     private String name;
     private long countExpired;
 
-    public BookExpired(int bookId,long countExpired) {
+    public BookExpired(int bookId,String name,long countExpired) {
         this.bookId = bookId;
-//        this.name = name;
+        this.name = name;
         this.countExpired = countExpired;
     }
 }

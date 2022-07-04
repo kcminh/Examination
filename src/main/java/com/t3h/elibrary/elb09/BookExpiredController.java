@@ -17,17 +17,16 @@ public class BookExpiredController {
 
     @GetMapping("/rpt-book-expired")
     public String reportBookExpired(ModelMap modelMap, @RequestParam(name = "chart", required = false) String chart) {
-        System.out.println(chart);
         List<BookExpired> bookExpireds = repo.findBookExpiredCount();
 
-        Integer[] bookIds = new Integer[bookExpireds.size()];
+        String[] bookNames = new String[bookExpireds.size()];
         Long[] countExpired = new Long[bookExpireds.size()];
         int i = 0, j = 0;
         for (BookExpired bookExpired : bookExpireds) {
-            bookIds[i++] = bookExpired.getBookId();
+            bookNames[i++] = bookExpired.getName();
             countExpired[j++] = bookExpired.getCountExpired();
         }
-        modelMap.addAttribute("bookIds", bookIds);
+        modelMap.addAttribute("bookNames", bookNames);
         modelMap.addAttribute("countExpired", countExpired);
         modelMap.addAttribute("chartType", (chart == null || chart.isEmpty() ? "line" : chart));
 

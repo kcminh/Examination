@@ -7,7 +7,6 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.sql.Timestamp;
 
 @Data
@@ -15,12 +14,14 @@ import java.sql.Timestamp;
 @Setter
 @Entity
 @Table(name = "borrow_books")
-@IdClass(BorrowBook.class)
-public class BorrowBook implements Serializable {
+public class BorrowBook {
     @Id
-    @Column(name = "book_id")
-    private int bookId;
-    @Id
+    @Column(name = "borrow_id")
+    private int borrowId;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "book_id", referencedColumnName = "book_id")
+    private Book book;
     @Column(name = "student_id")
     private int studentId;
     @Column(name = "borrow_date")
