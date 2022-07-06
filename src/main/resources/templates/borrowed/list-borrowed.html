@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table class="table">
+    <thead>
+        <tr>
+            <th>bookId</th>
+            <th>studentId</th>
+            <th>borrowDate</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr th:each="b: ${borrows}">
+            <td th:text="${b.bookId}"></td>
+            <td th:text="${b.studentId}"></td>
+            <td th:text="${b.borrowDate}"></td>
+            <td>
+                <a th:href="@{/#}">Delete Book</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>
