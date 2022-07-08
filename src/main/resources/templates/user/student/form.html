@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th=http://www.thymeleaf.org>
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Details</title>
+    <style>
+        form {
+            display: grid;
+        }
+        input[type="submit"] {
+            width: 10rem;
+        }
+        input[type="button"] {
+            width: 10rem;
+        }
+        a {
+            text-decoration: none;
+            color: #fff;
+            padding: 6px;
+        }
+        a:hover {
+            color: #fff;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Student Details</h1>
+        <form th:action="@{/student/save}" th:object="${students}" id="form-details" th:method="PUT">
+            <label class="mt-2" for="userid">userId: </label>
+            <input id="userid" th:name="userId" th:value="${students.userId}">
+
+            <label class="mt-2" for="username">username: </label>
+            <input id="username" type="text" th:name="username" th:value="${students.username}">
+
+            <label class="mt-2" for="password">password: </label>
+            <input id="password" type="text" th:name="password" th:value="${students.password}">
+
+            <label class="mt-2" for="firstName">firstName: </label>
+            <input id="firstName" type="text" th:name="firstName" th:value="${students.firstName}">
+
+            <label class="mt-2" for="lastName">lastName: </label>
+            <input id="lastName" type="text" th:name="lastName" th:value="${students.lastName}">
+
+            <label class="mt-2" for="email">email: </label>
+            <input id="email" type="text" th:name="email" th:value="${students.email}">
+
+            <label class="mt-2" for="mobile">mobile: </label>
+            <input id="mobile" type="text" th:name="mobile" th:value="${students.mobile}">
+
+            <label class="mt-2" for="userType">userType: </label>
+            <select name="userType" id="userType">
+                <option th:each="t : ${students.userType}" th:value="${t}" th:text="${t}"></option>
+            </select>
+
+            <label class="mt-2" for="createAt">createAt: </label>
+            <input id="createAt" th:value="${students.createAt}" th:name="createAt">
+
+            <label class="mt-2" for="status">status: </label>
+            <select th:name="status" id="status">
+                <option th:each="s: ${students.status}" th:value="${s}" th:text="${s}"></option>
+            </select>
+
+            <label class="mt-2" for="expiredDate">expiredDate: </label>
+            <input id="expiredDate" type="datetime-local" th:name="expiredDate" th:value="${students.expiredDate}">
+
+            <div style="display: flex; justify-content: flex-start">
+                <input class="btn btn-dark mt-3" type="submit" id="save-btn" value="Save">
+                <button class="btn btn-danger mt-3 ms-3" type="button"><a th:href="@{/student/list}">Cancel</a></button>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>
