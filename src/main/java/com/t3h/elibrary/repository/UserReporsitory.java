@@ -1,5 +1,6 @@
-package com.t3h.elibrary.elb09;
+package com.t3h.elibrary.repository;
 
+import com.t3h.elibrary.entity.UserInfo;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserReporsitory extends JpaRepository<UserInfo, Integer> {

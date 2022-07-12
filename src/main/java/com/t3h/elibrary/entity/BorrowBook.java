@@ -3,10 +3,7 @@ package com.t3h.elibrary.entity;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
@@ -14,10 +11,14 @@ import java.time.LocalDate;
 @Table(name = "borrow_books")
 public class BorrowBook {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "borrow_id")
     private int borrowId;
-    @Column(name = "book_id")
-    private int bookId;
+//    @Column(name = "book_id")
+//    private int bookId;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "book_id", referencedColumnName = "book_id")
+    private Book book;
     @Column(name = "student_id")
     private int studentId;
     @Column(name = "borrow_date")

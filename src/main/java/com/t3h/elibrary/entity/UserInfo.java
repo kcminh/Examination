@@ -1,4 +1,4 @@
-package com.t3h.elibrary.elb09;
+package com.t3h.elibrary.entity;
 
 import lombok.Data;
 import lombok.Getter;
