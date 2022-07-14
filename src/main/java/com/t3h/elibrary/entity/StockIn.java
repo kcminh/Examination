@@ -13,8 +13,6 @@ import java.time.LocalDate;
 
 @Entity
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "stock_in")
 public class StockIn {
     @Id

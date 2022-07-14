@@ -1,6 +1,6 @@
 package com.t3h.elibrary.controller;
 
-import com.t3h.elibrary.entity.BookExpired;
+import com.t3h.elibrary.entity.model.BookExpired;
 import com.t3h.elibrary.repository.BorrowBookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

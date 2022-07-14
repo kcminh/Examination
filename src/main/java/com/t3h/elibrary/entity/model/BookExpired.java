@@ -1,4 +1,4 @@
-package com.t3h.elibrary.entity;
+package com.t3h.elibrary.entity.model;
 
 import lombok.Getter;
 import lombok.Setter;

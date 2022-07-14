@@ -3,7 +3,6 @@ package com.t3h.elibrary.controller;
 import com.t3h.elibrary.entity.Book;
 import com.t3h.elibrary.entity.BorrowBook;
 import com.t3h.elibrary.entity.model.BorrowForm;
-import com.t3h.elibrary.repository.BookRepository;
 import com.t3h.elibrary.service.BorrowBookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,8 +17,6 @@ import java.util.List;
 public class BorrowBookController {
     @Autowired
     private BorrowBookService borrowBookService;
-    @Autowired
-    private BookRepository bookRepository;
 
     @GetMapping("/list")
     public String listIssuedBook(Model model) {
@@ -39,8 +36,10 @@ public class BorrowBookController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-        public String addBorrow(@ModelAttribute("borrows") BorrowForm borrowForm, ModelMap modelMap, BorrowBook borrowBook) {
-            borrowBook.setBook(bookRepository.findById(borrowForm.getBookId()).orElse(null));
+        public String addBorrow(@ModelAttribute("borrows") BorrowForm borrowForm,
+                                ModelMap modelMap,
+                                BorrowBook borrowBook) {
+            borrowBook.setBookId(borrowForm.getBookId());
             borrowBook.setStudentId(borrowForm.getStudentId());
             borrowBook.setExpiredDate(borrowForm.getExpiredDate());
 

@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -44,11 +43,13 @@ public class BorrowBookService {
     }
 
     public BorrowBook addBorrow(BorrowBook borrowBook) throws RuntimeException {
-        int bookId= Objects.isNull(borrowBook.getBook()) ?  -1 : borrowBook.getBook().getBookId();
-        StockIn stockIn = stockInRepository.findById(bookId).orElseThrow();
+//        int bookId= Objects.isNull(borrowBook.getBook()) ?  -1 : borrowBook.getBook().getBookId();
+//        StockIn stockIn = stockInRepository.findById(bookId).orElseThrow();
+        StockIn stockIn = stockInRepository.findById(borrowBook.getBookId()).get();
 
-        if(borrowBookRepository.borrowBookPerWeek(borrowBook.getStudentId()) < 4 && borrowBookRepository.borrowBookByStatus(borrowBook.getStudentId()) < 7) {
-            if (stockIn.getQuantity() != 0) {
+        if(borrowBookRepository.borrowBookPerWeek(borrowBook.getStudentId()) < 4 &&
+                borrowBookRepository.borrowBookByStatus(borrowBook.getStudentId()) < 7) {
+            if (stockIn.getQuantity() > 0) {
                 LocalDate date = java.time.LocalDate.now();
                 borrowBook.setBorrowDate(date);
                 borrowBook.setStatus(Constants.BORROW_STATUS_BORROWING);

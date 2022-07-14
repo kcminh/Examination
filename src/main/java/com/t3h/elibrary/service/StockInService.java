@@ -9,4 +9,5 @@ import org.springframework.stereotype.Service;
 public class StockInService {
     @Autowired
     private StockInRepository stockInRepository;
+
 }
