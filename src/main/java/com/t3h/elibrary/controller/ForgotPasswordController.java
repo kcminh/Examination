@@ -1,7 +1,9 @@
-package com.t3h.elibrary.elb09;
+package com.t3h.elibrary.controller;
 
 import com.t3h.elibrary.common.ConfigProperties;
 import com.t3h.elibrary.common.MessageProperties;
+import com.t3h.elibrary.entity.UserInfo;
+import com.t3h.elibrary.repository.UserReporsitory;
 import com.t3h.elibrary.mail.MailUtil;
 import org.apache.commons.validator.routines.EmailValidator;
 import org.springframework.beans.factory.annotation.Autowired;

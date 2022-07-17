@@ -1,15 +1,11 @@
-package com.t3h.elibrary.elb09;
+package com.t3h.elibrary.entity;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Getter
-@Setter
 @Data
 @Table(name = "books")
 public class Book {
@@ -29,12 +25,11 @@ public class Book {
     @Column(name = "book_country")
     private String bookCountry;
     @Column(name = "facebook")
-    private String facebook;
+    private String faceBook;
     @Column(name = "status")
     private String status;
-
-    @OneToOne(mappedBy="book")
-    private BorrowBook borrowBook;
+//    @OneToOne(mappedBy="book")
+//    private BorrowBook borrowBook;
 
 }
 

@@ -1,8 +1,6 @@
-package com.t3h.elibrary.elb09;
+package com.t3h.elibrary.entity;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,8 +11,6 @@ import java.sql.Timestamp;
 
 @Entity
 @Data
-@Getter
-@Setter
 @Table(name = "users_information")
 public class UserInfo {
     @Id
