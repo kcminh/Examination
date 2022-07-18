@@ -32,6 +32,8 @@ public class UserInfo {
     private String userType;
     @Column(name = "create_at")
     private Timestamp createAt;
+    @Column(name = "status")
+    private String status;
     @Column(name = "expire_date")
     private Date expireDate;
 

@@ -1,5 +1,6 @@
 package com.t3h.elibrary.service;
 
+import com.t3h.elibrary.common.Constants;
 import com.t3h.elibrary.entity.Book;
 import com.t3h.elibrary.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +14,18 @@ public class BookService {
     @Autowired
     private BookRepository bookRepository;
 
-    public List<Book> listBook() {
-        return bookRepository.findAll();
+    public List<Book> listBook(String status) {
+        if (status != null) {
+            if (status.equals(Constants.BOOK_STATUS_NEW)) {
+                return bookRepository.listBookByStatus(Constants.BOOK_STATUS_NEW);
+            } else if (status.equals(Constants.BOOK_STATUS_ISSUED)) {
+                return bookRepository.listBookByStatus(Constants.BOOK_STATUS_ISSUED);
+            } else {
+                return bookRepository.listBookByStatus(Constants.BOOK_STATUS_ARCHIVE);
+            }
+        } else {
+            return bookRepository.findAll();
+        }
     }
 
     public Book getBookById(int bookId) {
