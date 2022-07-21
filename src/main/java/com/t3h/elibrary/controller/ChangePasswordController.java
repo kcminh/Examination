@@ -4,7 +4,7 @@ import com.t3h.elibrary.common.MessageProperties;
 import com.t3h.elibrary.common.PasswordValidator;
 import com.t3h.elibrary.entity.model.PasswordReset;
 import com.t3h.elibrary.entity.UserInfo;
-import com.t3h.elibrary.repository.UserReporsitory;
+import com.t3h.elibrary.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
 public class ChangePasswordController {
 
     @Autowired
-    UserReporsitory userRepo;
+    UserRepository userRepo;
 
     @GetMapping("/changePassword")
     public String changePassword(ModelMap modelMap, HttpServletRequest request) {

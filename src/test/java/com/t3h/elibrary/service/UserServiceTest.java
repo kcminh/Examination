@@ -1,6 +1,7 @@
 package com.t3h.elibrary.service;
 
 import com.t3h.elibrary.entity.ModelUser;
+import com.t3h.elibrary.entity.UserInfo;
 import com.t3h.elibrary.repository.UserRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -40,10 +41,10 @@ public class UserServiceTest {
     @DisplayName("test list user success")
     public void testListUserSuccess(){
         // setup
-        when(userRepository.findAll()).thenReturn(List.of(new ModelUser()));
+        when(userRepository.findAll()).thenReturn(List.of(new UserInfo()));
 
         // execute
-        List<ModelUser> users = userService.listUser("");
+        List<UserInfo> users = userService.listUser("");
 
         // assert
         assertTrue(!users.isEmpty());
