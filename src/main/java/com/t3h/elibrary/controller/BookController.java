@@ -56,13 +56,5 @@ public class BookController {
         bookService.saveBook(book);
         return "redirect:/book/list";
     }
-
-    @GetMapping("/list")
-    public ModelAndView getAllListBook() {
-        ModelAndView modelAndView =new ModelAndView("listbook");
-        modelAndView.addObject("books", bookService.listBook());
-
-        return modelAndView;
-    }
 }
 
