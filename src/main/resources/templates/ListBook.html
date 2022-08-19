@@ -3,56 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <style>
-        table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-            margin-bottom: 10px;
+        body {
+            font-family: 'lato', sans-serif;
+        }
+        .text-box {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        td, th {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
+        h1 {
+            font-size: 35px;
+            font-weight: 800;
+            background-color: #95A5A6;
+            color: #fff;
+            display: block;
+            padding: 2px;
         }
 
-        tr:nth-child(even) {
-            background-color: #dddddd;
+        h1:nth-child(2) {
+            position: absolute;
+            background-color: #fff;
+            color: #000;
+            clip-path: inset(-1% -1% 10% -1%);
+        }
+        .container {
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-right: 40px;
+        }
+        li {
+            border-radius: 3px;
+            padding: 25px 30px;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 25px;
+        }
+
+        .table-header {
+            background-color: #95A5A6;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .table-row {
+            background-color: #ffffff;
+            box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        .col-1 {
+            flex-basis: 10%;
+        }
+
+        .col-2 {
+            flex-basis: 15%;
+        }
+
+        .col-3 {
+            flex-basis: 15%;
+        }
+        .col-4 {
+            flex-basis: 10%;
+        }
+        .col-5 {
+            flex-basis: 10%;
+        }
+        .col-6 {
+            flex-basis: 10%;
+        }
+        .col-7 {
+            flex-basis: 10%;
+        }
+        .col-8 {
+            flex-basis: 10%;
+        }
+
+        .btn{
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btnExport {
+            font-weight: bold;
+            font-size: 15px;
+            color: #000;
+            display: inline-block;
+            padding: 5px 20px 5px 20px;
+            position: relative;
+            border: 3px solid #95A5A6;
+            border-radius: 20px;
+            margin: 20px;
+        }
+
+        .btnExport > a {
+            text-decoration: none;
+            color: black;
         }
     </style>
     <title>List Book</title>
 </head>
 <body>
-<table class="table">
-    <thead>
-        <tr>
-            <th>bookId</th>
-            <th>name</th>
-            <th>author</th>
-            <th>publisher</th>
-            <th>publishDate</th>
-            <th>categoryId</th>
-            <th>bookCountry</th>
-            <th>faceBook</th>
-            <th>status</th>
-        </tr>
-    </thead>
+<div class="text-box">
+    <h1>LIST BOOK</h1>
+    <h1>LIST BOOK</h1>
+</div>
 
-    <tbody>
-        <tr th:each="book: ${books}" th:object="${stock}">
-            <td th:text="${book.bookId}"></td>
-            <td th:text="${book.name}"></td>
-            <td th:text="${book.author}"></td>
-            <td th:text="${book.publisher}"></td>
-            <td th:text="${book.publishDate}"></td>
-            <td th:text="${book.categoryId}"></td>
-            <td th:text="${book.bookCountry}"></td>
-            <td th:text="${book.faceBook}"></td>
-            <td th:text="${book.status}"></td>
-        </tr>
-    </tbody>
-        <a th:href="@{/book/exportbookcsv}">Export File To CSV</a>
-        <a th:href="@{/book/exportbookxlsx}">Export File To XLSX</a>
+<div id="list" class="container">
+    <ul>
+        <li class="table-header">
+            <div class="col col-1">BOOKID</div>
+            <div class="col col-2">Name</div>
+            <div class="col col-3">AUTHOR</div>
+            <div class="col col-4">PUBLISHER</div>
+            <div class="col col-5">CATEGORYID</div>
+            <div class="col col-6">BOOOKCOUNTRY</div>
+            <div class="col col-7">FACEBOOK</div>
+            <div class="col col-8">STATUS</div>
+        </li>
+        <li th:each="book: ${books}" th:object="${stock}" class="table-row">
+            <div class="col col-1" th:text="${book.bookId}"></div>
+            <div class="col col-2" th:text="${book.name}"></div>
+            <div class="col col-3" th:text="${book.author}"></div>
+            <div class="col col-4" th:text="${book.publisher}"></div>
+            <div class="col col-5" th:text="${book.categoryId}"></div>
+            <div class="col col-6" th:text="${book.bookCountry}"></div>
+            <div class="col col-7" th:text="${book.faceBook}"></div>
+            <div class="col col-8" th:text="${book.status}"></div>
+        </li>
+    </ul>
+</div>
+<div class="btn">
+    <button class="btnExport"><a th:href="@{/book/exportbookcsv}">Export File To CSV</a></button>
+    <button class="btnExport"><a th:href="@{/book/exportbookxlsx}">Export File To XLSX</a></button>
+</div>
 </table>
 </body>
 </html>

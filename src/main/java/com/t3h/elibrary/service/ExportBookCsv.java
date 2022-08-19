@@ -31,7 +31,6 @@ public class ExportBookCsv {
                     Book.Fields.name.toUpperCase(),
                     Book.Fields.author.toUpperCase(),
                     Book.Fields.publisher.toUpperCase(),
-                    Book.Fields.publishDate.toUpperCase(),
                     Book.Fields.categoryId.toUpperCase(),
                     Book.Fields.bookCountry.toUpperCase(),
                     Book.Fields.faceBook.toUpperCase(),
@@ -39,7 +38,7 @@ public class ExportBookCsv {
             );
             for (Book book : books) {
                 csvPrinter.printRecord(book.getBookId(), book.getName(), book.getAuthor(), book.getPublisher(),
-                        book.getPublishDate(), book.getCategoryId(), book.getBookCountry(), book.getFaceBook(),
+                        book.getCategoryId(), book.getBookCountry(), book.getFaceBook(),
                         book.getStatus());
             }
         } catch (IOException ignored) {

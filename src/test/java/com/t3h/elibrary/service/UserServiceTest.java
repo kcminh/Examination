@@ -16,10 +16,8 @@ import static org.mockito.Mockito.when;
 public class UserServiceTest {
     @InjectMocks
     private UserService userService;
-
     @Mock
     private UserRepository userRepository;
-
     @Test
     @DisplayName("test")
     public void testListUserSuccess(){

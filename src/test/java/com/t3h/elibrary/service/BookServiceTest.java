@@ -21,20 +21,14 @@ import static org.mockito.BDDMockito.given;
 public class BookServiceTest {
     @InjectMocks
     private BookService bookService;
-
-
     @Mock
     private BookRepository bookRepository;
-
     private Random random;
-
-
     @BeforeEach
     public void init(){
         MockitoAnnotations.openMocks(this.getClass());
         random = new Random();
     }
-
     @Test
     @DisplayName("it get list book success")
     public void testListBookSuccess(){

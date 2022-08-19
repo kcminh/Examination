@@ -3,52 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <style>
-        table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-            margin-bottom: 10px;
-        }
+      body {
+        font-family: 'lato', sans-serif;
+      }
+      .text-box {
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }
 
-        td, th {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-        }
+      h1 {
+          font-size: 35px;
+          font-weight: 800;
+          background-color: #95A5A6;
+          color: #fff;
+          display: block;
+          padding: 2px;
+      }
 
-        tr:nth-child(even) {
-            background-color: #dddddd;
-        }
+      h1:nth-child(2) {
+          position: absolute;
+          background-color: #fff;
+          color: #000;
+          clip-path: inset(-1% -1% 10% -1%);
+      }
+      .container {
+        max-width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+      li {
+        border-radius: 3px;
+        padding: 25px 30px;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 25px;
+      }
+
+      .table-header {
+        background-color: #95A5A6;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+      }
+
+      .table-row {
+        background-color: #ffffff;
+        box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+      }
+
+      .col-1 {
+        flex-basis: 10%;
+      }
+
+      .col-2 {
+        flex-basis: 40%;
+      }
+
+      .col-3 {
+        flex-basis: 25%;
+      }
+
+      .btn-ipt{
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }
+
+      .btnSearch {
+          font-weight: bold;
+          font-size: 15px;
+          text-decoration: none;
+          color: #000;
+          display: inline-block;
+          padding: 5px 20px 5px 20px;
+          position: relative;
+          border: 3px solid #95A5A6;
+          border-radius: 20px;
+      }
+
+      .iptSearch {
+          width: 15%;
+          padding: 5px 10px 5px 10px;
+          margin: 5px;
+          display: inline-block;
+          border: 1px solid #95A5A6;
+          border-radius: 4px;
+          box-sizing: border-box;
+      }
     </style>
     <title>List User</title>
 </head>
 <body>
-<div id="list">
-    <table>
-        <thead>
-        <tr>
-            <td name="username">Username</td>
-            <td name="fullname">Full Name</td>
-            <td name="email">Email</td>
-        </tr>
-        </thead>
-
-        <tbody>
-        <tr th:each="librarian: ${ModelUser}">
-            <td th:text="${librarian.username}"></td>
-            <td th:text="${librarian.firstName} + ${librarian.lastName}"></td>
-            <td th:text="${librarian.email}"></td>
-        </tr>
-        </tbody>
-    </table>
-    <input id="searchText" type="text" name="text">
-    <button onclick="searchByName()" type="submit">Search</button>
+<div class="text-box">
+    <h1>LIST USER</h1>
+    <h1>LIST USER</h1>
+</div>
+<div id="list" class="container">
+  <ul>
+    <li class="table-header">
+      <div class="col col-1">Username</div>
+      <div class="col col-2">Full Name</div>
+      <div class="col col-3">Email</div>
+    </li>
+    <li th:each="librarian: ${ModelUser}" class="table-row">
+      <div class="col col-1" th:text="${librarian.username}"></div>
+      <div class="col col-2" th:text="${librarian.firstName} + ${librarian.lastName}"></div>
+      <div class="col col-3" th:text="${librarian.email}"></div>
+    </li>
+  </ul>
+</div>
+<div class="btn-ipt">
+    <input id="searchText" class="iptSearch" type="text" name="text">
+    <button onclick="searchByName()" type="submit" class="btnSearch">Search</button>
 </div>
 <script>
-    function searchByName(){
-        var searchName = document.getElementById("searchText").value;
-        window.location.href=("/librarian/list?name="+ searchName);
-    }
+  function searchByName(){
+    var searchName = document.getElementById("searchText").value;
+    window.location.href=("/librarian/list?name="+ searchName);
+  }
 </script>
 </body>
 </html>

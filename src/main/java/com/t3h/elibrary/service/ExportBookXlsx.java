@@ -51,11 +51,10 @@ public class ExportBookXlsx {
         createCell(row, 1, "Name", style);
         createCell(row, 2, "Author", style);
         createCell(row, 3, "Publisher", style);
-        createCell(row, 4, "Publish Date", style);
-        createCell(row, 5, "Category Id", style);
-        createCell(row, 6, "Book Country", style);
-        createCell(row, 7, "Facebook", style);
-        createCell(row, 8, "Status", style);
+        createCell(row, 4, "Category Id", style);
+        createCell(row, 5, "Book Country", style);
+        createCell(row, 6, "Facebook", style);
+        createCell(row, 7, "Status", style);
     }
 
     private void createCell(Row row, int columnCount, Object value, CellStyle style) {
@@ -87,7 +86,6 @@ public class ExportBookXlsx {
             createCell(row, columnCount++, book.getName(), style);
             createCell(row, columnCount++, book.getAuthor(), style);
             createCell(row, columnCount++, book.getPublisher(), style);
-            createCell(row, columnCount++, book.getPublishDate(), style);
             createCell(row, columnCount++, book.getCategoryId(), style);
             createCell(row, columnCount++, book.getBookCountry(), style);
             createCell(row, columnCount++, book.getFaceBook(), style);

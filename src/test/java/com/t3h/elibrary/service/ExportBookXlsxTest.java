@@ -22,28 +22,19 @@ import java.util.function.Supplier;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.BDDMockito.given;
-
-
-
 @SpringBootTest
 public class ExportBookXlsxTest {
     @Mock
     private BookRepository bookRepository;
-
     private ExportBookXlsx exportBookXlsxNeedTest;
-
     private XSSFWorkbook workbook;
     private XSSFSheet sheet;
-
     private Random random;
-
-
     @BeforeEach
     public void init(){
         MockitoAnnotations.openMocks(this.getClass());
         random = new Random();
     }
-
     @Test
     public void itShouldExportSuccess() throws IOException {
         Book book1 = new Book();
@@ -95,7 +86,6 @@ class InMemoryServletOutputStream extends ServletOutputStream{
     public void setWriteListener(WriteListener writeListener) {
 
     }
-
     @Override
     public void write(int b) throws IOException {
         data.add(b);
@@ -297,7 +287,6 @@ class InMemoryHttpServletResponse implements HttpServletResponse{
     public void setLocale(Locale locale) {
 
     }
-
     @Override
     public Locale getLocale() {
         return null;

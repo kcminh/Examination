@@ -21,7 +21,6 @@ import static org.mockito.BDDMockito.given;
 
 @Getter
 class InMemoryWriter extends Writer{
-
     List<Character> characters = new ArrayList<>();
     @Override
     public void write(char[] cbuf, int off, int len) throws IOException {
@@ -33,25 +32,18 @@ class InMemoryWriter extends Writer{
             characters.add(cbuf[i]);
         }
     }
-
     @Override
     public void flush() throws IOException {
-
     }
-
     @Override
     public void close() throws IOException {
 
     }
 }
-
-
 @SpringBootTest
 public class ExportBookCsvTest {
-
     @Mock
     private BookRepository bookRepository;
-
     private Random random;
     private ExportBookCsv exportBookCsvNeedTest;
 
@@ -61,7 +53,6 @@ public class ExportBookCsvTest {
         exportBookCsvNeedTest = new ExportBookCsv(bookRepository);
         random = new Random();
     }
-
     @Test
     public void itWriteBookToCsvSuccess() {
         InMemoryWriter inMemoryWriter = new InMemoryWriter();
