@@ -21,7 +21,7 @@ public class ExportBookController {
     @Autowired
     private BookService bookService;
 
-    @GetMapping("/list")//
+    @GetMapping("/list")
     public String listBook(@ModelAttribute("books") Book book, Model model) {
         model.addAttribute("books", bookService.listBook());
         return "ListBook";
