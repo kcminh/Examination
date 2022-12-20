@@ -2,7 +2,6 @@ package com.t3h.elibrary.entity;
 
 import lombok.*;
 import lombok.experimental.FieldNameConstants;
-
 import javax.persistence.*;
 import java.sql.Timestamp;
 
