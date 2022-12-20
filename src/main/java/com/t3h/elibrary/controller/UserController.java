@@ -12,7 +12,7 @@ public class UserController {
     @Autowired
     private UserService userService;
     @GetMapping("/list")
-    public ModelAndView listUser(@RequestParam(value = "name", required = false) String name) {
+    public ModelAndView listUser(@RequestParam(value = "name", required = false) String name){
         ModelAndView modelAndView = new ModelAndView("/ListUser");
         modelAndView.addObject("ModelUser", userService.listUser(name));
         return modelAndView;
