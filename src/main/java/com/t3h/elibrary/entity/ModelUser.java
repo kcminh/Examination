@@ -2,6 +2,7 @@ package com.t3h.elibrary.entity;
 
 import lombok.*;
 import javax.persistence.*;
+
 @Data
 @Entity
 @Table(name = "users_information")
